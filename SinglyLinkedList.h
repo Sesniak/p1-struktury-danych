@@ -19,5 +19,10 @@ public:
 	void addAtBeginning(int v);
 	void addAtEnd(int v);
 	void addAtPos(int i, int v);
-	Node* find(int v)
+
+	void removeAtBeginning();
+	void removeAtEnd();
+	void removeAtPos(int i);
+
+	bool find(int v)
 };

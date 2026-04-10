@@ -60,16 +60,76 @@ void SinglyLinkedList::addAtPos(int i, int v)
 	}
 }
 
-Node* SinglyLinkedList::find(int v)
+void SinglyLinkedList::removeAtBeginning()
+{
+	Node* temp = head;
+	head = head->next;
+
+	if (!head)
+	{
+		tail = nullptr;
+	}
+
+	delete temp;
+}
+
+void SinglyLinkedList::removeAtEnd()
+{
+	if (head == tail)
+	{
+		delete head;
+		head = tail = nullptr;
+		return;
+	}
+	Node* cur = head;
+	while (cur->next != tail)
+	{
+		cur = cur->next;
+	}
+
+	delete tail;
+	tail = cur;
+	tail->next = nullptr;
+}
+
+void SinglyLinkedList::removeAtPos(int i)
+{
+	if (i == 0)
+	{
+		removeAtBeginning();
+		return;
+	}
+
+	Node* cur = head;
+	for (int k = 0; cur && k < i - 1; k++)
+	{
+		cur = cur->next;
+	}
+	if (!cur || !cur->next)
+	{
+		return;
+	}
+	Node* temp = cur->next;
+	cur->next = temp->next;
+
+	if (temp == tail)
+	{
+		tail = cur;
+	}
+
+	delete temp;
+}
+
+bool SinglyLinkedList::find(int v)
 {
 	Node* cur = head;
 	while (cur)
 	{
 		if (cur->value == v)
 		{
-			return;
+			return true;
 		}
 		cur = cur->next;
 	}
-	return nullptr;
+	return false;
 }

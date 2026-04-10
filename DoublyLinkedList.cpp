@@ -22,8 +22,9 @@ void DoublyLinkedList::addAtBeginning(int v)
 {
 	DNode* n = newDnode(v);
 	n->next = head;
+	if (head)
 	{
-		if (head) head->previous = n;
+		head->previous = n;
 	}
 	head = n;
 	if (!tail)
@@ -42,7 +43,6 @@ void DoublyLinkedList::addAtEnd(int v)
 	else
 	{
 		tail->next = n;
-		n->previous = n;
 		n->previous = tail;
 		tail = n;
 	}
@@ -65,7 +65,7 @@ void DoublyLinkedList::addAtPos(int i, int v)
 		return;
 	}
 
-	DNode* n = newDNode(v);
+	DNode* n = new DNode(v);
 	n->next = cur->next;
 	n->previous = cur;
 	if (cur->next)
@@ -81,16 +81,78 @@ void DoublyLinkedList::addAtPos(int i, int v)
 	}
 }
 
-DNode* DoublyLinkedList::find(int v)
+void DoublyLinkedList::removeAtBeginning()
+{
+	DNode* temp = head;
+	head = head->next;
+
+	if (head)
+	{
+		head->previous = nullptr;
+	}
+	else
+	{
+		tail = nullptr;
+	}
+
+	delete temp;
+}
+
+void DoublyLinkedList::removeAtEnd()
+{
+	if (head == tail)
+	{
+		delete tail;
+		head = tail = nullptr;
+		return;
+	}
+
+	DNode* temp = tail;
+	tail = tail->prev;
+	tail->next = nullptr;
+
+	delete temp;
+}
+
+void DoublyLinkedList::removeAtPos(int i)
+{
+	if (i == 0)
+	{
+		removeAtBeginning();
+		return;
+	}
+
+	DNode* cur = head;
+	for (int k = 0; cur && k << i; k++)
+	{
+		cur = cur->next;
+	}
+	if (cur->previous)
+	{
+		cur->previous->next = cur->next;
+	}
+	if (cur->next)
+	{
+		cur->next->previous = cur->previous;
+	}
+	if (cur == tail)
+	{
+		tail = cur->previous;
+	}
+
+	delete cur;
+}
+
+bool DoublyLinkedList::find(int v)
 {
 	DNode* cur = head;
 	while (cur)
 	{
 		if (cur->v == v)
 		{
-			return cur;
+			return true;
 		}
 		cur = cur->next;
 	}
-	return nullptr;
+	return false;
 }
