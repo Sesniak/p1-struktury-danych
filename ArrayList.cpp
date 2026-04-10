@@ -5,6 +5,13 @@ ArrayList::ArrayList(): rozmiar(2), ilosc_el(0){
     dane = new int[rozmiar];
 }
 
+ArrayList::ArrayList(int poczatkowy_rozmiar){
+    if (poczatkowy_rozmiar <= 0) poczatkowy_rozmiar = 2;
+    rozmiar = poczatkowy_rozmiar;
+    ilosc_el = 0;
+    dane = new int[rozmiar];
+}
+
 ArrayList::~ArrayList(){
     delete[] dane;
 }

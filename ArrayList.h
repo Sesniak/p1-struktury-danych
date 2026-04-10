@@ -8,6 +8,7 @@ class ArrayList{
 
     public:
     ArrayList();
+    ArrayList(int poczatkowy_romiar);
     ~ArrayList();
 
     void dodPocz(int wartosc);
