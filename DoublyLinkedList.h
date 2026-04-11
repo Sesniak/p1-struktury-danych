@@ -26,6 +26,6 @@ public:
 	void removeAtEnd();
 	void removeAtPos(int i);
 
-	bool find(int v)
+	bool find(int v);
 };
 

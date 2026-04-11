@@ -43,7 +43,7 @@ void SinglyLinkedList::addAtPos(int i, int v)
 		return;
 	}
 	Node* cur = head;
-	for (int k = 0; cur && k < i - 1; i++)
+	for (int k = 0; cur && k < i - 1; k++)
 	{
 		cur = cur->next;
 	}
