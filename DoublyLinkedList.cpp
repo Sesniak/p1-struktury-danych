@@ -15,6 +15,8 @@ DoublyLinkedList::~DoublyLinkedList()
 	head = tail = nullptr;
 }
 
+//Funkcje dodawania
+
 void DoublyLinkedList::addAtBeginning(int v)
 {
 	DNode* n = new DNode(v);
@@ -77,6 +79,8 @@ void DoublyLinkedList::addAtPos(int i, int v)
 		tail = n;
 	}
 }
+
+//Funckje odejmowania
 
 void DoublyLinkedList::removeAtBeginning()
 {
@@ -146,6 +150,8 @@ void DoublyLinkedList::removeAtPos(int i)
 
 	delete cur;
 }
+
+//Funkcja szukania
 
 bool DoublyLinkedList::find(int v)
 {

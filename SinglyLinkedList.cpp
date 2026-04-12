@@ -13,6 +13,8 @@ SinglyLinkedList::~SinglyLinkedList()
 	}
 }
 
+//Funkcje dodawania
+
 void SinglyLinkedList::addAtBeginning(int v)
 {
 	Node* n = new Node(v);
@@ -59,6 +61,8 @@ void SinglyLinkedList::addAtPos(int i, int v)
 		tail = n;
 	}
 }
+
+//Funkcje usuwania
 
 void SinglyLinkedList::removeAtBeginning()
 {
@@ -119,6 +123,8 @@ void SinglyLinkedList::removeAtPos(int i)
 
 	delete temp;
 }
+
+//Funkcje szukania
 
 bool SinglyLinkedList::find(int v)
 {
